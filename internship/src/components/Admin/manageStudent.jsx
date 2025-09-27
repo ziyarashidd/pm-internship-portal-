@@ -19,7 +19,7 @@ function ManageStudents() {
   const fetchApplications = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/manageStudents"); // Correct endpoint
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/manageStudents"); // Correct endpoint
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       setApplications(data.applications || []);
@@ -55,7 +55,7 @@ function ManageStudents() {
     e.preventDefault();
     setUpdating(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/manageStudents/${editingApp._id}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/manageStudents/${editingApp._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -80,7 +80,7 @@ function ManageStudents() {
     if (!window.confirm("Are you sure you want to delete this application? This action cannot be undone.")) return;
     setDeletingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/manageStudents/${id}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/manageStudents/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error('Delete failed');

@@ -12,7 +12,7 @@ function ApplicationsReview() {
   const fetchApplications = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/admin/applications"); // Backend route
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/admin/applications"); // Backend route
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       setApplications(data.applications || []);

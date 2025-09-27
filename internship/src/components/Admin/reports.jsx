@@ -11,7 +11,7 @@ function Reports() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token"); // Admin token
-      const res = await fetch("http://localhost:5000/api/admin/reports/approved-applications", {
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/admin/reports/approved-applications", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Failed to fetch');
@@ -49,7 +49,7 @@ function Reports() {
       const token = localStorage.getItem("token");
       const newStatus = currentStatus === "Completed" ? "Not Completed" : "Completed";
 
-      const res = await fetch(`http://localhost:5000/api/admin/reports/update-application/${appId}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/admin/reports/update-application/${appId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

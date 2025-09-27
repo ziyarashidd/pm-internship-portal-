@@ -22,7 +22,7 @@ function ProfilePage() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/profile", {
+        const res = await fetch("https://pm-internship-portal.onrender.com/api/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error('Failed to fetch profile');
@@ -74,7 +74,7 @@ function ProfilePage() {
     setSaving(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/profile", {
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

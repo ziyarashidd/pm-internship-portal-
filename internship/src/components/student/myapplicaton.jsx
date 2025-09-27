@@ -15,7 +15,7 @@ function MyApplications() {
     const fetchApplications = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:5000/api/application/student/${username}`);
+        const res = await fetch(`https://pm-internship-portal.onrender.com/api/application/student/${username}`);
         if (!res.ok) throw new Error('Failed to fetch applications');
         const data = await res.json();
         console.log('Raw apps from backend:', data.applications); // Debug: Check raw data
@@ -70,7 +70,7 @@ function MyApplications() {
   const handleWithdraw = async (appId) => {
     setSubmitting(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/application/${appId}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/application/${appId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
