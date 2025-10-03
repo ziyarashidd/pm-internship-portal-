@@ -12,7 +12,7 @@ function ApplicationsReview() {
   const fetchApplications = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/admin/applications"); // Backend route
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/admin/applications"); // Backend route
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       setApplications(data.applications || []);
@@ -46,7 +46,7 @@ function ApplicationsReview() {
   const handleApprove = async (id) => {
     setUpdatingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/applications/${id}/approve`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/admin/applications/${id}/approve`, {
         method: "PUT",
       });
       if (!res.ok) throw new Error('Approve failed');
@@ -69,7 +69,7 @@ function ApplicationsReview() {
     if (!window.confirm("Are you sure you want to reject this application? This action cannot be undone.")) return;
     setUpdatingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/applications/${id}/reject`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/admin/applications/${id}/reject`, {
         method: "PUT",
       });
       if (!res.ok) throw new Error('Reject failed');
@@ -253,5 +253,6 @@ function ApplicationsReview() {
     </div>
   );
 }
+
 
 export default ApplicationsReview;
