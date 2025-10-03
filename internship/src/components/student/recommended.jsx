@@ -75,7 +75,7 @@ function Recommended() {
         setLoading(true);
         // Fetch profile for auto-fill
         if (token) {
-          const profileRes = await fetch("http://localhost:5000/api/profile", {
+          const profileRes = await fetch("https://pm-internship-portal.onrender.com/api/profile", {
             headers: { Authorization: `Bearer ${token}` },
           });
           if (profileRes.ok) {
@@ -85,7 +85,7 @@ function Recommended() {
         }
         // Fetch applications
         if (username) {
-          const appRes = await fetch(`http://localhost:5000/api/application/student/${username}`);
+          const appRes = await fetch(`https://pm-internship-portal.onrender.com/api/application/student/${username}`);
           if (appRes.ok) {
             const data = await appRes.json();
             console.log('Raw apps from backend:', data.applications); // Debug: Check raw data
@@ -170,7 +170,7 @@ function Recommended() {
 
     setSubmitting(true);
     try {
-      const res = await fetch("http://localhost:5000/api/application/apply", {
+      const res = await fetch("https://pm-internship-portal.onrender.com/api/application/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ studentUsername: username, internshipTitle: selectedInternship.title, ...formData }),
@@ -202,7 +202,7 @@ function Recommended() {
   const handleWithdraw = async (appId) => {
     if (!confirm('Are you sure you want to withdraw this application?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/application/${appId}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/application/${appId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -620,5 +620,6 @@ function Recommended() {
     </div>
   );
 }
+
 
 export default Recommended; 
