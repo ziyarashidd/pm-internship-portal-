@@ -18,7 +18,7 @@ function Home() {
         setLoading(true);
         // Fetch profile for personalized greeting (optional, if API exists)
         if (token) {
-          const profileRes = await fetch("http://localhost:5000/api/profile", {
+          const profileRes = await fetch("https://pm-internship-portal.onrender.com/api/profile", {
             headers: { Authorization: `Bearer ${token}` },
           });
           if (profileRes.ok) {
@@ -28,7 +28,7 @@ function Home() {
         }
         // Fetch applications
         if (username) {
-          const res = await fetch(`http://localhost:5000/api/application/student/${username}`);
+          const res = await fetch(`https://pm-internship-portal.onrender.com/api/application/student/${username}`);
           if (!res.ok) throw new Error('Failed to fetch applications');
           const data = await res.json();
           console.log('Fetched applications from backend:', data.applications); // Debug log
@@ -124,7 +124,7 @@ function Home() {
   const handleWithdraw = async (appId) => {
     if (!confirm('Are you sure you want to withdraw this application?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/application/${appId}`, {
+      const res = await fetch(`https://pm-internship-portal.onrender.com/api/application/${appId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -472,5 +472,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;
